@@ -229,8 +229,8 @@ def _cherry_pick_commits(p_repo_root: str, p_remote_branch_name: str, p_commit_i
     if not p_commit_ids:
         return
 
-    # Fetch branch to ensure commits exist locally
-    _run_git(p_repo_root, ["fetch", "origin", p_remote_branch_name])
+    # Fetch master to ensure all merged commits are available locally
+    _run_git(p_repo_root, ["fetch", "origin", "master"])
 
     original_head = _run_git(p_repo_root, ["rev-parse", "HEAD"]).strip()
 
